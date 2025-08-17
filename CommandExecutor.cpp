@@ -3,7 +3,7 @@
 #include <sstream>
 
 extern int nextId;
-extern Widget* findWidget(int id);
+Widget* findWidget(int id);
 
 CommandExecutor::CommandExecutor(Window* root) : rootWindow(root) {}
 

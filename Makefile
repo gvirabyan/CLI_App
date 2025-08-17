@@ -1,11 +1,13 @@
 TARGET = CLI_App 
-SRCS = main.cpp Widget.cpp Button.cpp Table.cpp Text.cpp Window.cpp CommandExecutor.cpp
+
+SRCS = $(wildcard *.cpp)
+OBJ = $(SRCS:.cpp=.o)
 CXX = g++
 
-all: $(TARGET)
 
-$(TARGET): $(SRCS)
-	$(CXX) $(SRCS) -o $(TARGET)
-
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET)
+%.o: %.cpp
+	$(CXX) -c $< -o $@
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJ)

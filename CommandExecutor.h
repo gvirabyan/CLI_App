@@ -13,6 +13,7 @@ class CommandExecutor {
 public:
     CommandExecutor(Window* root);
     void execute(const std::vector<std::string>& commands);
+    void printSuccessfulOperation(const std::string& text);
 
 private:
     Window* rootWindow;
@@ -23,7 +24,6 @@ private:
     
     void printError(const std::string& text);
     void printWarning(const std::string& text);
-    void printSuccessfulOperation(const std::string& text);
 };
 
 #endif

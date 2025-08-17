@@ -27,7 +27,7 @@ int main() {
     CommandExecutor executor(rootWindow); 
 
     std::string line;
-    printSuccessfulOperation("Root window (ID: 1) created. Use 'add' command.");
+   executor.printSuccessfulOperation("Root window (ID: 1) created. Use 'add' command.");
     
     do {
         std::cout << " -> ";
