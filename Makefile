@@ -1,13 +1,21 @@
-TARGET = CLI_App 
+TARGET = CLI_App
 
-SRCS = $(wildcard *.cpp)
-OBJ = $(SRCS:.cpp=.o)
+SRC_DIR = src
+INC_DIR = inc
+OBJ_DIR = obj
+
 CXX = g++
+CXXFLAGS = -I$(INC_DIR)
 
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(OBJ) -o $(TARGET)
-%.o: %.cpp
-	$(CXX) -c $< -o $@
+$(TARGET): $(OBJS)
+	$(CXX) $(OBJS) -o $(TARGET)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(TARGET) $(OBJ)
+	rm -f $(TARGET) $(OBJ_DIR)/*.o
+
